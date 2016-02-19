@@ -87,7 +87,7 @@ public class DialogListarticulos extends JDialog {
             jLabel.setIcon(new ImageIcon("IMAGENES/LUPA.PNG"));
             LblVendedor = new JLabel();
             LblVendedor.setBounds(new Rectangle(12, 15, 64, 21));
-            LblVendedor.setText("Art�culo:");
+            LblVendedor.setText("Articulo:");
             jContentPane = new JPanel();
             jContentPane.setLayout(null);
             jContentPane.add(getTxtArticulo(), null);
@@ -193,7 +193,7 @@ public class DialogListarticulos extends JDialog {
 
             actualizalista();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "�Ha ocurrido un error al intentar acceder los datos de los Art�culos!", "Error de acceso", 2);
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al intentar acceder los datos de los Art�culos!", "Error de acceso", 2);
             return;
         }
     }

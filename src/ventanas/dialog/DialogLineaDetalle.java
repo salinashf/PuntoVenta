@@ -46,7 +46,7 @@ public class DialogLineaDetalle extends JDialog {
         this.setSize(561, 178);
         this.setResizable(false);
         this.setModal(true);
-        this.setTitle("L�nea de Venta de la Factura No. " + FrameFacturacion.numero);
+        this.setTitle("Linea de Venta de la Factura No. " + FrameFacturacion.numero);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.setContentPane(getJContentPane());
         this.setLocationRelativeTo(null);

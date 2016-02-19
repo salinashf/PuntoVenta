@@ -46,6 +46,7 @@ import javax.swing.SwingUtilities;
 
 
 
+
 public class FrameFacturacion extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -1366,7 +1367,8 @@ public class FrameFacturacion extends JFrame {
                         UIManager.setLookAndFeel(info.getClassName());
                         break;
                         }
-                        }*/
+                        }
+                        */
                         //UIManager.setLookAndFeel(new WindowsLookAndFeel());
 
                         WebLookAndFeel.install();
@@ -1727,6 +1729,11 @@ public class FrameFacturacion extends JFrame {
 
     public void cargarfactura() {
         try {
+            if(sentenciacab.isClosed())
+            sentenciacab = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            if (resultadocab.isClosed())
+            resultadocab = sentenciacab.executeQuery("SELECT *,(sub_gen-tot_des+tot_iva) as total,round((sub_gen-tot_des+tot_iva-pago_ini),2) as saldo FROM FACV_CAB ORDER BY NUM_FACV");
+
             clientefac = resultadocab.getString("id_cli");
             localizacliente();
             vendedorfac = resultadocab.getString("id_ven");

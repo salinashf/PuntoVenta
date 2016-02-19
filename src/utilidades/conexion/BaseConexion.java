@@ -21,17 +21,20 @@ public class BaseConexion {
     public static void conectar() {
         try {
             if (cns == null) {
-                conexion();
+               //conexionSQLite();
+                
+                 conexion();
             } else {
                 if (cns.isClosed()) {
-                    conexion();
+                  // conexionSQLite();
+                     conexion();
                 }
 
             }
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error Interno!", "Registro de Coneccion falló", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error Interno! ", "Registro de Coneccion falló "+ ex.getMessage(), JOptionPane.ERROR_MESSAGE);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Acceso denegado!!", "Usuario NO Autorizado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Acceso denegado!!", "Usuario NO Autorizado"+ ex.getMessage(), JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -41,6 +44,13 @@ public class BaseConexion {
         String url = "jdbc:mysql://" + host + ":3306/" + dataBase;
         cns = DriverManager.getConnection(url, user, pass);
     }
+
+    private static void conexionSQLite() throws ClassNotFoundException, SQLException {
+       Class.forName("org.sqlite.JDBC");
+        String url = "jdbc:sqlite:./bd/facturacion.db3" ;
+        cns = DriverManager.getConnection(url);
+    }
+
 
     private static void cerrarConexion() throws SQLException {
         if (cns != null) {
